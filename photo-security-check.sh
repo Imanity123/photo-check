@@ -1,5 +1,6 @@
 #!/bin/bash
 # 配置信息 - 替换为你的实际信息
+GITHUB_TOKEN="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"
 OWNER="Imanity123"
 REPO="my-photo-check"
 FILE_PATH="data.txt"

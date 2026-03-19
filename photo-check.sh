@@ -1,10 +1,16 @@
 #!/bin/bash
 # 配置信息 - 替换为你的实际信息
-GITHUB_TOKEN="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"
 OWNER="Imanity123"
 REPO="my-photo-check"
 FILE_PATH="data.txt"
 BRANCH="main"                  # 改成你实际用的分支（默认main）
+
+# 从环境变量获取 GITHUB_TOKEN，如果未设置则提示并退出
+if [ -z "$GITHUB_TOKEN" ]; then
+    echo "错误：请先设置环境变量 GITHUB_TOKEN"
+    echo "用法：export GITHUB_TOKEN='你的token' && $0 \"要添加的文本\""
+    exit 1
+fi
 
 # 检查参数
 [ $# -eq 0 ] && { echo "用法: $0 \"要添加的文本\""; exit 1; }

@@ -1,30 +1,8 @@
-#!/bin/bash
-# 配置信息 - 替换为你的实际信息
-if grep -q $'\r' "$0"; then
-    echo "检测到脚本包含Windows换行符，自动修复为Unix格式..."
-    # 临时文件存储修复后的内容
-    TMP_FILE=$(mktemp)
-    # 移除CR字符（\r），保留LF
-    tr -d '\r' < "$0" > "$TMP_FILE"
-    # 覆盖原文件（保留权限）
-    cat "$TMP_FILE" > "$0"
-    rm -f "$TMP_FILE"
-    # 重新执行修复后的脚本（避免当前进程仍用错误格式）
-    exec "$0" "$@"
-fi
-
-GITHUB_TOKEN="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"
+GITHUB_TOKEN=""
 OWNER="Imanity123"
 REPO="my-photo-check"
 FILE_PATH="data.txt"
 BRANCH="main"                  # 改成你实际用的分支（默认main）
-
-# 从环境变量获取 GITHUB_TOKEN，如果未设置则提示并退出
-if [ -z "$GITHUB_TOKEN" ]; then
-    echo "错误：请先设置环境变量 GITHUB_TOKEN"
-    echo "用法：export GITHUB_TOKEN='你的token' && $0 \"要添加的文本\""
-    exit 1
-fi
 
 # 检查参数
 [ $# -eq 0 ] && { echo "用法: $0 \"要添加的文本\""; exit 1; }
